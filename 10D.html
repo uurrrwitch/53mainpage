@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10Д</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #E8D8C4; color: #212842; overflow-x: hidden; }
+        
+        header {
+            background: #212842; color: #E8D8C4; padding: 15px; text-align: center;
+            position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #E8D8C4;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 11px;
+            border: 1px solid #E8D8C4; 
+            padding: 12px 8px;
+             border-radius: 5px;
+             transition: 0.2s;
+        }
+
+        .back-btn:hover{
+          background: #E8D8C4;
+          color: #212842;
+        }
+
+        /* Кнопки дней */
+        .day-selector {
+            display: flex; justify-content: center; gap: 8px; margin: 15px 0;
+            padding: 0 10px;
+        }
+        .day-btn {
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+            background: white;
+            border: none;
+            padding: 18px 24px;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #6D2932;
+            font-size: 17px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1;
+            max-width: 60px;
+            font-family: Arial;
+
+        }
+        .day-btn.active { background: #6D2932; color: white; }
+
+        /* Слайдер */
+        .schedule-window { width: 100%; overflow: hidden; }
+        .schedule-container { display: flex; transition: transform 0.4s ease-out; width: 500%; }
+        .day-slide { width: 20%; padding: 0 15px; box-sizing: border-box; }
+
+        table {
+            width: 100%; border-collapse: collapse; background: white;
+            border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        th { background: #6D2932; color: white; padding: 12px; text-align: left; font-size: 11px; }
+        td { padding: 10px 12px; border-bottom: 1px solid #f2f2f2; font-size: 14px; }
+    
+        .num { width: 25px; font-weight: bold; color: #aaa; text-align: center; }
+        .time { font-weight: bold; color: #6D2932; width: 75px; }
+        .room-box { background: #eee; padding: 3px 6px; border-radius: 4px; font-weight: 800; display: inline-block; min-width: 30px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="53mainpage.html#btn10d" class="back-btn">← НАЗАД</a>
+    <h1 style="margin:0; font-size: 16px;">10 "Д" КЛАСС</h1>
+</header>
+
+<div class="day-selector">
+    <button class="day-btn active" onclick="goToDay(0)">Пн</button>
+    <button class="day-btn" onclick="goToDay(1)">Вт</button>
+    <button class="day-btn" onclick="goToDay(2)">Ср</button>
+    <button class="day-btn" onclick="goToDay(3)">Чт</button>
+    <button class="day-btn" onclick="goToDay(4)">Пт</button>
+</div>
+
+<div class="schedule-window">
+    <div class="schedule-container" id="masterContainer">
+        
+        <div class="day-slide">
+            <h3 style="text-align:center; margin-top:0"> ПОНЕДЕЛЬНИК</h3>
+            <table>
+                <thead><tr><th class="num">№</th><th class="time">ВРЕМЯ</th><th>ПРЕДМЕТ</th><th style="text-align:center">КАБ.</th></tr></thead>
+                <tbody>
+                    <tr><td class="num">1</td><td class="time">08:00</td><td>ГЕОГРАФИЯ </td><td align="center"><span class="room-box">46</span></td></tr>
+                    <tr><td class="num">2</td><td class="time">08:50</td><td>АЛГЕБРА </td><td align="center"><span class="room-box">109 </span></td></tr>
+                    <tr><td class="num">3</td><td class="time">09:50</td><td>ФИЗИКА </td><td align="center"><span class="room-box">202 </span></td></tr>
+                    <tr><td class="num">4</td><td class="time">10:40</td><td>КАЗ ЯЗ И ЛИТ </td><td align="center"><span class="room-box">24/413</span></td></tr>
+                    <tr><td class="num">5</td><td class="time">11:40</td><td>ИСТ КАЗ </td><td align="center"><span class="room-box">13 </span></td></tr>
+                    <tr><td class="num">6</td><td class="time">12:30</td><td>НВП </td><td align="center"><span class="room-box">109 </span></td></tr>
+                    <tr><td class="num">7</td><td class="time">13:20</td><td>- </td><td align="center"><span class="room-box">-</span></td></tr>
+                    <tr><td class="num">8</td><td class="time">14:00</td><td>- </td><td align="center"><span class="room-box">-</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="day-slide">
+            <h3 style="text-align:center; margin-top:0">ВТОРНИК</h3>
+            <table>
+                <thead><tr><th class="num">№</th><th class="time">ВРЕМЯ</th><th>ПРЕДМЕТ</th><th style="text-align:center">КАБ.</th></tr></thead>
+                <tbody>
+                    <tr><td class="num">1</td><td class="time">08:00</td><td>КАЗ ЯЗ И ЛИТЕР </td><td align="center"><span class="room-box">24/402</span></td></tr>
+                    <tr><td class="num">2</td><td class="time">08:50</td><td>АНГЛ ЯЗ </td><td align="center"><span class="room-box">408/37</span></td></tr>
+                    <tr><td class="num">3</td><td class="time">09:50</td><td>РУСС ЯЗ </td><td align="center"><span class="room-box">22</span></td></tr>
+                    <tr><td class="num">4</td><td class="time">10:40</td><td>АЛГЕБРА </td><td align="center"><span class="room-box">206 </span></td></tr>
+                    <tr><td class="num">5</td><td class="time">11:40</td><td>АЛГЕБРА </td><td align="center"><span class="room-box">206</span></td></tr>
+                    <tr><td class="num">6</td><td class="time">12:30</td><td>ФИЗ-РА </td><td align="center"><span class="room-box">-</span></td></tr>
+                    <tr><td class="num">7</td><td class="time">13:20</td><td>ФИЗ-РА(Ф) </td><td align="center"><span class="room-box">-</span></td></tr>
+                    <tr><td class="num">8</td><td class="time">14:00</td><td>ГЛОБ КОМП </td><td align="center"><span class="room-box">-</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="day-slide">
+            <h3 style="text-align:center; margin-top:0">СРЕДА</h3>
+            <table>
+                <thead><tr><th class="num">№</th><th class="time">ВРЕМЯ</th><th>ПРЕДМЕТ</th><th style="text-align:center">КАБ.</th></tr></thead>
+                <tbody>
+                    <tr><td class="num">1</td><td class="time">08:00</td><td>ГЕОГРАФИЯ </td><td align="center"><span class="room-box">46 </span></td></tr>
+                    <tr><td class="num">2</td><td class="time">08:50</td><td>АЛГЕБРА </td><td align="center"><span class="room-box">205 </span></td></tr>
+                    <tr><td class="num">3</td><td class="time">09:50</td><td>В ИСТОРИЯ </td><td align="center"><span class="room-box">13 </span></td></tr>
+                    <tr><td class="num">4</td><td class="time">10:40</td><td>АНГЛ ЯЗ </td><td align="center"><span class="room-box">408/37 </span></td></tr>
+                    <tr><td class="num">5</td><td class="time">11:40</td><td>ФИЗИКА </td><td align="center"><span class="room-box">202 </span></td></tr>
+                    <tr><td class="num">6</td><td class="time">12:30</td><td>ИНФОРМ</td><td align="center"><span class="room-box">-</span></td></tr>
+                    <tr><td class="num">7</td><td class="time">13:20</td><td>- </td><td align="center"><span class="room-box">-</span></td></tr>
+                    <tr><td class="num">8</td><td class="time">14:00</td><td>- </td><td align="center"><span class="room-box">-</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="day-slide">
+            <h3 style="text-align:center; margin-top:0">ЧЕТВЕРГ</h3>
+            <table>
+                <thead><tr><th class="num">№</th><th class="time">ВРЕМЯ</th><th>ПРЕДМЕТ</th><th style="text-align:center">КАБ.</th></tr></thead>
+                <tbody>
+                    <tr><td class="num">1</td><td class="time">08:00</td><td>РУСС ЛИТ </td><td align="center"><span class="room-box">22</span></td></tr>
+                    <tr><td class="num">2</td><td class="time">08:50</td><td>КАЗ ЯЗ И ЛИТ </td><td align="center"><span class="room-box">24/15</span></td></tr>
+                    <tr><td class="num">3</td><td class="time">09:50</td><td>ГЕОМЕТРИЯ </td><td align="center"><span class="room-box">109 </span></td></tr>
+                    <tr><td class="num">4</td><td class="time">10:40</td><td>ИНФОРМ</td><td align="center"><span class="room-box">- </span></td></tr>
+                    <tr><td class="num">5</td><td class="time">11:40</td><td>ФИЗИКА </td><td align="center"><span class="room-box">202 </span></td></tr>
+                    <tr><td class="num">6</td><td class="time">12:30</td><td>ИСТ КАЗ (В) </td><td align="center"><span class="room-box">13 </span></td></tr>
+                    <tr><td class="num">7</td><td class="time">13:20</td><td>АЛГЕБРА(В)</td><td align="center"><span class="room-box">109 </span></td></tr>
+                    <tr><td class="num">8</td><td class="time">13:50</td><td>-</td><td align="center"><span class="room-box">-</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="day-slide">
+            <h3 style="text-align:center; margin-top:0">ПЯТНИЦА</h3>
+            <table>
+                <thead><tr><th class="num">№</th><th class="time">ВРЕМЯ</th><th>ПРЕДМЕТ</th><th style="text-align:center">КАБ.</th></tr></thead>
+                <tbody>
+                    <tr><td class="num">1</td><td class="time">08:00</td><td>РУСС ЛИТ</td><td align="center"><span class="room-box">22 </span></td></tr>
+                    <tr><td class="num">2</td><td class="time">08:50</td><td>ГЕОГРАФИЯ </td><td align="center"><span class="room-box">46 </span></td></tr>
+                    <tr><td class="num">3</td><td class="time">09:50</td><td>ГЕОМЕТРИЯ </td><td align="center"><span class="room-box">109 </span></td></tr>
+                    <tr><td class="num">4</td><td class="time">10:40</td><td>ОСНОВЫ ПРАВА </td><td align="center"><span class="room-box">13 </span></td></tr>
+                    <tr><td class="num">5</td><td class="time">11:40</td><td>ФИЗ-РА </td><td align="center"><span class="room-box">-</span></td></tr>
+                    <tr><td class="num">6</td><td class="time">12:30</td><td>АНГЛ ЯЗ </td><td align="center"><span class="room-box">408/37</span></td></tr>
+                    <tr><td class="num">7</td><td class="time">13:20</td><td>К ЯЗЫК (В) </td><td align="center"><span class="room-box">24</span></td></tr>
+                    <tr><td class="num">8</td><td class="time">14:00</td><td></td><td align="center"><span class="room-box">-</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function goToDay(index) {
+        const container = document.getElementById('masterContainer');
+        const buttons = document.querySelectorAll('.day-btn');
+        container.style.transform = `translateX(-${index * 20}%)`;
+        buttons.forEach(btn => btn.classList.remove('active'));
+        buttons[index].classList.add('active');
+    }
+</script>
+
+</body>
+</html>
