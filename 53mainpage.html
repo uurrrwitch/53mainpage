@@ -17,13 +17,15 @@
 body {
   margin: 0;
   padding-top: 100px;
+  min-height:100vh;
   background:
    linear-gradient(180deg, rgb(238, 231, 213),
     rgb(160, 120, 127));
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 20px;
+  display:flex;
+ flex-direction:column;
 }
 
 
@@ -236,4 +238,5 @@ document.querySelector('a[href="#section11"]').onclick = (e) => { e.preventDefau
 
 
  </body>
+
 </html>
